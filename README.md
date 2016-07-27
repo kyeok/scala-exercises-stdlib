@@ -1,5 +1,5 @@
 # scala-exercises-stdlib
-scala-exercises-stdlib
+https://www.scala-exercises.org/std_lib/options
 
 <pre>
    .-'''-. ,---------.  ______               .---.    .-./`)  _______
@@ -11,5 +11,5 @@ scala-exercises-stdlib
 \    `-'  |   (_(=)_)  |  (_.\.' /          `-'`-'|___ |   | | (_{;}_) |
  \       /     (_I_)   |       .'            |        \|   | |  (_,_)  /
   `-...-'      '---'   '-----'`              `--------`'---' /_______.'
-                                                                         
+
 </pre>
