@@ -41,11 +41,15 @@ class OptionSpec extends FunSuite with Matchers {
   test("getOrElse") {
     value1 getOrElse "No Value" shouldBe "Found Value"
     value2 getOrElse ("No Value") shouldBe "No Value"
+
+    None getOrElse (0) shouldBe 0
   }
 
   test("isEmpty") {
     value1.isEmpty shouldBe false
     value2.isEmpty shouldBe true
+
+    None.isEmpty shouldBe true
   }
 
   test("pattern matching") {
@@ -74,13 +78,35 @@ class OptionSpec extends FunSuite with Matchers {
 
     result1 shouldBe Some(4.5)
     result2 shouldBe None
+
+    val aNumber: Option[Int] = Some(100)
+    val bNumber: Option[Int] = None
+
+    aNumber.map(_ * 1.5) shouldBe Some(150)
+    bNumber.map(_ * 1.5) shouldBe None
+
   }
 
-  test("fold") {
+  test("fold는 디폴트 값을 주고 연산한다.") {
     val result1 = number.fold(0)(_ * 3)
     result1 shouldBe 9
 
     val result2 = noNumber.fold(0)(_ * 3)
     result2 shouldBe 0
+  }
+
+  test("puruni_option") {
+    val something: Option[String] = Some("The place where I have lunch is delicious~!")
+    something getOrElse ("Default") shouldBe "The place where I have lunch is delicious~!"
+  }
+
+  test("puruni pattern matching") {
+    val something: Option[String] = Some("Harley")
+    val somethingValue = something match {
+      case Some(v: String) => "Hello " + v
+      case None => "Ooops!"
+    }
+
+    somethingValue shouldBe "Hello Harley"
   }
 }
