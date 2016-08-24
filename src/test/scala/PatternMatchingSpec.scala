@@ -60,9 +60,9 @@ class PatternMatchingSpec extends WordSpec with Matchers {
         case _ => None
       }
 
-      getName(new Facebook).get shouldBe "아이디"
-      getName(new Kakao).get shouldBe "본명"
-      getName(new KakaoStrory).get shouldBe "닉네임"
+      getName(new Facebook).getOrElse("") shouldBe "아이디"
+      getName(new Kakao).getOrElse("") shouldBe "본명"
+      getName(new KakaoStrory).getOrElse("") shouldBe "닉네임"
     }
 
 
