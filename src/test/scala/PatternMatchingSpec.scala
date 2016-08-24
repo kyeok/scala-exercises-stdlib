@@ -53,16 +53,16 @@ class PatternMatchingSpec extends WordSpec with Matchers {
         def getNickName() = "닉네임"
       }
 
-      def getName(link: Link): String = link match {
-        case x: Facebook => x.getID()
-        case x: Kakao => x.getName()
-        case x: KakaoStrory => x.getNickName()
-        case _ => "Who are you?"
+      def getName(link: Link): Option[String] = link match {
+        case x: Facebook => Some(x.getID())
+        case x: Kakao => Some(x.getName())
+        case x: KakaoStrory => Some(x.getNickName())
+        case _ => None
       }
 
-      getName(new Facebook) shouldBe "아이디"
-      getName(new Kakao) shouldBe "본명"
-      getName(new KakaoStrory) shouldBe "닉네임"
+      getName(new Facebook).get shouldBe "아이디"
+      getName(new Kakao).get shouldBe "본명"
+      getName(new KakaoStrory).get shouldBe "닉네임"
     }
 
 
